@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shiva! 🎂</title>
+    <meta name="description" content="An immersive 3D birthday experience for an amazing friend">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <p>Loading your birthday surprise...</p>
+        </div>
+    </div>
+
+    <!-- Three.js Canvas -->
+    <canvas id="canvas3d"></canvas>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="track1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Toggle -->
+    <button id="musicToggle" class="music-toggle">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <!-- UI Overlays -->
+    <div id="overlay" class="overlay">
+        <!-- Welcome Screen -->
+        <div id="welcomeText" class="text-overlay active">
+            <h1 class="title">Happy Birthday!</h1>
+            <p class="subtitle">To my amazing Shiva! 💝</p>
+            <button class="start-btn" id="startBtn">
+                <span>Let's Celebrate</span>
+                <span class="sparkle">✨</span>
+            </button>
+        </div>
+
+        <!-- Cake Scene Text -->
+        <div id="cakeText" class="text-overlay">
+            <h2 class="scene-title">Make a wish, Shiva! 🎂</h2>
+            <p class="instruction">Click on the candles to blow them out!</p>
+        </div>
+
+        <!-- Gift Scene Text -->
+        <div id="giftText" class="text-overlay">
+            <h2 class="scene-title">I have something special for you! 🎁</h2>
+            <p class="instruction">Click on the gift to open it!</p>
+        </div>
+
+        <!-- Favours Scene Text -->
+        <div id="favoursText" class="text-overlay">
+            <h2 class="scene-title">Your 5 Special Favours</h2>
+            <div class="favours-list">
+                <div class="favour-item"><span class="favour-number">1.</span> <strong>The Always Available
+                        Pass</strong> - When you need someone to listen, I'm here. No matter the time or reason.</div>
+                <div class="favour-item"><span class="favour-number">2.</span> <strong>The Problem Solver Token</strong>
+                    - Bring me any challenge, and I'll help you find a way through it.</div>
+                <div class="favour-item"><span class="favour-number">3.</span> <strong>The Mood Lifter Coupon</strong> -
+                    Having a rough day? I'll do whatever it takes to bring back your smile.</div>
+                <div class="favour-item"><span class="favour-number">4.</span> <strong>The Thoughtful Surprise
+                        Voucher</strong> - Let me plan something special just for you, whenever you need it.</div>
+                <div class="favour-item"><span class="favour-number">5.</span> <strong>The No Questions Asked
+                        Card</strong> - Your wildcard. Ask for anything, and consider it done.</div>
+            </div>
+            <button class="continue-btn" id="continueBtn">Continue ➜</button>
+        </div>
+
+        <!-- Message Scene Text -->
+        <div id="messageText" class="text-overlay">
+            <h2 class="message-title">A Message From My Heart 💖</h2>
+            <div class="message-box">
+                <p>Hey Shiva! 🎉</p>
+                <p>You've been one of the rare constants in my life. The person I can go to when the world feels heavier
+                    than usual, the one who listens with patience, laughs with intention, and somehow knows how to
+                    steady my thoughts without even trying.</p>
+                <p>I don't say this often, but your presence genuinely makes life feel lighter. Thank you for being
+                    there in moments when I didn't even know how to explain what I was feeling. Thank you for showing
+                    up, for checking in, for being the quiet strength on the days I struggled to find my own.</p>
+                <p>People like you are not common. You're the kind of person who brings clarity just by being
+                    themselves. And I want you to know this — I'm always here for you. No matter the hour, the
+                    situation, or the chaos. You never have to think twice about reaching out.</p>
+                <p>You deserve people who choose you with intention, and I hope I can be one of those people in your
+                    life. You're a genuinely rare soul. A gem in the most effortless way.</p>
+                <p class="final-wish">🎂 Happy Birthday, Shivani! May all your dreams come true! ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div id="instructions" class="instructions">
+        <p> Drag to rotate </p>
+    </div>
+
+    <!-- Three.js and Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
