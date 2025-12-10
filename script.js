@@ -76,6 +76,7 @@ function init() {
     // Event listeners
     window.addEventListener('resize', onWindowResize);
     canvas.addEventListener('click', onCanvasClick);
+    canvas.addEventListener('touchstart', onCanvasClick, { passive: false });
     canvas.addEventListener('mousemove', onMouseMove);
 
     // UI Events
@@ -1093,8 +1094,22 @@ function showHeartScene() {
 
 // ===== INTERACTIONS =====
 function onCanvasClick(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    let x, y;
+
+    // Handle touch events
+    if (event.type === 'touchstart') {
+        x = event.changedTouches[0].clientX;
+        y = event.changedTouches[0].clientY;
+        // Don't prevent default here to allow scrolling if needed, 
+        // but for 3D interaction usually we might want to.
+        // However, a simple tap shouldn't interfere with scroll too much.
+    } else {
+        x = event.clientX;
+        y = event.clientY;
+    }
+
+    mouse.x = (x / window.innerWidth) * 2 - 1;
+    mouse.y = -(y / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
 
