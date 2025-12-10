@@ -32,7 +32,12 @@ function init() {
         0.1,
         1000
     );
-    camera.position.set(0, 2, 8);
+    // Initial position - zoom out if mobile
+    if (window.innerWidth < 768) {
+        camera.position.set(0, 2, 12);
+    } else {
+        camera.position.set(0, 2, 8);
+    }
 
     // Renderer
     const canvas = document.getElementById('canvas3d');
@@ -974,8 +979,9 @@ function showFlowerScene() {
     });
 
     // Animate camera
+    const targetZ = window.innerWidth < 768 ? 12 : 8; // Further back on mobile
     gsap.to(camera.position, {
-        x: 0, y: 3, z: 8,
+        x: 0, y: 3, z: targetZ,
         duration: 2,
         ease: "power2.inOut"
     });
@@ -1480,6 +1486,14 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Adjust camera distance for mobile to fit everything in view
+    if (window.innerWidth < 768) {
+        camera.position.z = 12; // Zoom out more on mobile
+    } else {
+        // We generally rely on the scene-specific camera transitions, 
+        // but this helps if resizing happens during a static moment
+    }
 }
 
 function startExperience() {
